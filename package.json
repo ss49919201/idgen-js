@@ -2,5 +2,9 @@
   "name": "@ss49919201/idgen",
   "version": "0.0.1",
   "author": "ss49919201",
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "@types/node": "^22.8.2",
+    "typescript": "^5.6.3"
+  }
 }
