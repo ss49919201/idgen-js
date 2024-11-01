@@ -1,4 +1,4 @@
-import readline from "node:readline/promises";
+import { newQuestionManager } from "./question";
 
 const options = [
   { id: "1", name: "UUID" },
@@ -6,13 +6,10 @@ const options = [
 ];
 
 async function run() {
-  const readlineIf = readline.createInterface({
-    input: process.stdin,
-    output: process.stdout,
-  });
+  const questionManager = newQuestionManager();
 
   try {
-    const answer = await readlineIf.question(`Select id type: 
+    const answer = await questionManager.ask(`Select id type: 
 ${options.map((o) => `${o.id}: ${o.name}`).join("\n")}
 (Enterキーで終了): `);
 
@@ -24,7 +21,7 @@ ${options.map((o) => `${o.id}: ${o.name}`).join("\n")}
     // TODO
     console.log(`Selected: ${selectedOption.name}`);
   } finally {
-    readlineIf.close();
+    questionManager.close();
   }
 }
 
