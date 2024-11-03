@@ -3,7 +3,7 @@ import { newQuestionManager } from "./question";
 const options = [
   { id: "1", name: "UUID" },
   { id: "2", name: "Random string" },
-];
+] as const;
 
 async function run() {
   const questionManager = newQuestionManager();
