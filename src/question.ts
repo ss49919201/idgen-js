@@ -15,8 +15,8 @@ export const newQuestionManager: (
   opt?: QuestionManagerOptions
 ) => QuestionManager = (opt) => {
   const readlineIf = createInterface({
-    input: process.stdin,
-    output: process.stdout,
+    input: opt?.input || process.stdin,
+    output: opt?.output || process.stdout,
   });
 
   return {
