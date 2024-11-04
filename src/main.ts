@@ -1,8 +1,14 @@
 import { newQuestionManager } from "./question";
+import { generateRandomId } from "./randomId";
+import { generateUuid } from "./uuid";
 
 const options = [
-  { id: "1", name: "UUID" },
-  { id: "2", name: "Random string" },
+  { id: "1", name: "UUID", fn: generateUuid },
+  {
+    id: "2",
+    name: "Random string",
+    fn: () => generateRandomId(new Uint8Array(16)).join(""),
+  },
 ] as const;
 
 async function run() {
@@ -18,8 +24,7 @@ ${options.map((o) => `${o.id}: ${o.name}`).join("\n")}
       throw new Error("Invalid option");
     }
 
-    // TODO
-    console.log(`Selected: ${selectedOption.name}`);
+    console.log(selectedOption.fn());
   } finally {
     questionManager.close();
   }
