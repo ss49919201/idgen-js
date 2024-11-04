@@ -11,23 +11,27 @@ const options = [
   },
 ] as const;
 
+const question = `Select id type:
+${options.map((o) => `${o.id}: ${o.name}`).join("\n")}
+(Enterキーで終了): `;
+
 async function run() {
   const questionManager = newQuestionManager();
 
-  try {
-    const answer = await questionManager.ask(`Select id type: 
-${options.map((o) => `${o.id}: ${o.name}`).join("\n")}
-(Enterキーで終了): `);
+  await questionManager
+    .ask(question)
+    .then((answer) => {
+      const selectedOption = options.find((o) => o.id === answer);
 
-    const selectedOption = options.find((o) => o.id === answer);
-    if (!selectedOption) {
-      throw new Error("Invalid option");
-    }
+      if (!selectedOption) {
+        return Promise.reject(new Error("Invalid option"));
+      }
 
-    console.log(selectedOption.fn());
-  } finally {
-    questionManager.close();
-  }
+      console.log(selectedOption.fn());
+    })
+    .finally(() => {
+      questionManager.close();
+    });
 }
 
 run().catch((e) => {
