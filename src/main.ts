@@ -12,7 +12,7 @@ const options = [
 ] as const;
 
 const question = `Select id type:
-${options.map((o) => `${o.id}: ${o.name}`).join("\n")}
+${options.map(({ id, name }) => `${id}: ${name}`).join("\n")}
 (Enterキーで終了): `;
 
 async function run() {
