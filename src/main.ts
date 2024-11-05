@@ -15,7 +15,7 @@ const question = `Select id type:
 ${options.map(({ id, name }) => `${id}: ${name}`).join("\n")}
 (Enterキーで終了): `;
 
-async function run() {
+const run = async () => {
   const questionManager = newQuestionManager();
 
   await questionManager
@@ -32,7 +32,7 @@ async function run() {
     .finally(() => {
       questionManager.close();
     });
-}
+};
 
 run().catch((e) => {
   console.error(e);
