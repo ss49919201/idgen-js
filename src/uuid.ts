@@ -1,3 +1,3 @@
-export const generateUuid = () => {
+export const uuid = () => {
   return crypto.randomUUID();
 };

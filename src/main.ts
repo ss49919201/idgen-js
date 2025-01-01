@@ -1,9 +1,9 @@
 import { newQuestionManager } from "./question";
 import { generateRandomId } from "./randomId";
-import { generateUuid } from "./uuid";
+import { uuid } from "./uuid";
 
 const options = [
-  { id: "1", name: "UUID", fn: generateUuid },
+  { id: "1", name: "UUID", fn: uuid },
   {
     id: "2",
     name: "Random string",
