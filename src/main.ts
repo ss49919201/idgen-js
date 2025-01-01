@@ -1,5 +1,5 @@
 import { newQuestionManager } from "./question";
-import { generateRandomId } from "./randomId";
+import { randomId } from "./randomId";
 import { uuid } from "./uuid";
 
 const options = [
@@ -7,7 +7,7 @@ const options = [
   {
     id: "2",
     name: "Random string",
-    fn: () => generateRandomId(new Uint8Array(16)).join(""),
+    fn: () => randomId(new Uint8Array(16)).join(""),
   },
 ] as const;
 
